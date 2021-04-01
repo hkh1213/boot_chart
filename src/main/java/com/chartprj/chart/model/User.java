@@ -7,10 +7,14 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
+@AllArgsConstructor
 @Document(collection = "users")
 public class User {
     @Id
@@ -34,7 +38,10 @@ public class User {
 
     public User() {
     }
-
+    public String toString() {
+        return String.format("id=%s, username='%s', password'%s', email=%s",
+                id, username, password, email);
+    }
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;

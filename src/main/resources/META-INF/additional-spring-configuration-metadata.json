@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.jwt.jwtSecret",
+      "type": "java.lang.String",
+      "description": "Description for spring.jwt.jwtSecret."
+    },
+    {
+      "name": "spring.jwt.jwtExpirationMs",
+      "type": "java.lang.String",
+      "description": "Description for spring.jwt.jwtExpirationMs."
+    }
+  ] }

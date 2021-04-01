@@ -4,6 +4,7 @@ import com.chartprj.chart.security.service.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +15,18 @@ import java.util.Date;
 
 @Component
 public class JwtUtils implements Serializable {
+    public final static long TOKEN_VALIDATION_SECOND = 1000L * 10;
+    public final static long REFRESH_TOKEN_VALIDATION_SECOND = 1000L * 60 * 24 * 2;
+
+    final static public String ACCESS_TOKEN_NAME = "accessToken";
+    final static public String REFRESH_TOKEN_NAME = "refreshToken";
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     // 비밀키 선언
-    @Value("${chart_user.app.jwtSecret}")
+
+    //@Value("${spring.jwt.secret}")
     private String jwtSecret;
     // 토큰 만료일
-    @Value("${chart_user.app.jwtExpirationMs}")
+    //@Value("${spring.jwt.jwtExpirationMs}")
     private int jwtExpirationMs;
     //토큰 생성 함수
     public String generateJwtToken(Authentication authentication) {
